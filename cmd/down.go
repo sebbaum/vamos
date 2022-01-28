@@ -13,7 +13,7 @@ var downCmd = &cobra.Command{
 	Short: "Shut down your local development environment",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("down called")
+		fmt.Println("down called. However it is not yet implemented.")
 	},
 }
 
