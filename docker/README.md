@@ -1,0 +1,1 @@
+Contains Dockerfiles for each service that is build by Vamos
