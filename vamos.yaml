@@ -1,0 +1,127 @@
+version: 0.1
+name: vamos-app
+description: "App that uses vamos"
+
+domain: vamos.stack
+use_ssl: false
+open_browser: true
+
+# Enable or disable available services
+services:
+  php: true
+  nginx: true
+  nvm: false
+  mysql: false
+  mailhog: false
+  memcached: false
+  mongodb: false
+  redis: false
+  dynamoDB: false
+  frameworks: true
+  custom: false
+
+########################################################################################################################
+#
+# PHP
+# Define installed PHP (fpm) versions, customize the current version of PHP and which PHP modules should be installed
+# for each version.
+#
+# Defaults: php{version}-fpm, php{version}-cli, php-xdebug, php-memcached and php-redis
+#
+########################################################################################################################
+php:
+  version: 7.4
+  modules:
+    - curl
+    - zip
+    - common
+    - json
+    - mysql
+    - readline
+    - xml
+    - gd
+    - mbstring
+    - opcache
+    - sqlite3
+    - intl
+  ini_path:
+  ioncube: false
+  composer: true
+
+# ----
+
+########################################################################################################################
+#
+# Define a path to additional ca certificates, that should be trusted.
+# Default: empty
+#
+########################################################################################################################
+extra_certificates:
+
+########################################################################################################################
+#
+# Define additional ports that should be forwarded from the host to the gues
+# system.
+# Default: empty
+#
+########################################################################################################################
+ports:
+  # - localhost: 8080
+  #   box: 80
+  # - localhost: 8088
+  #   box: 8080
+
+########################################################################################################################
+#
+# Define additional synced folders for the vagrant box.
+# - host: /path/on/host/system
+#   guest: /tmp/path/on/guest/system
+#   owner: root (optional, default: vagrant)
+#   group: root (optional, default: vagrant)
+#
+########################################################################################################################
+folders:
+  # Default web document root
+  - host: ./src
+    guest: /var/www/html
+    owner: www-data
+    group: www-data
+
+########################################################################################################################
+#
+# NODE
+# Define installed NODE versions and choose the current aka default version of NODE.
+#
+# Use '*' in versions array to install the latest version.
+# Use 'lts/*' in vesions array to install the latest lts version.
+# Use node as current version to use the latest version.
+#
+########################################################################################################################
+node:
+  version: lts/erbium
+
+########################################################################################################################
+#
+# Config variables for Mysql.
+# We strongly recommend to use different credentials in your test and prod environments.
+#
+# The migration file is only used, if it exists.
+# If the file exists, it is copied to /tmp/mysql/migration.sql in the vagrant box and imported by the mysql.sh
+# provisioning script.
+#
+# Examples for charset and collation
+#   charset: latin1
+#   collation: latin1_swedish_ci
+#
+#   charset: utf8
+#   collation: utf8_general_ci
+#
+########################################################################################################################
+mysql:
+  MYSQL_DATABASE: mydb
+  MYSQL_DATABASE_CHARSET: latin1
+  MYSQL_DATABASE_COLLATION: latin1_swedish_ci
+  MYSQL_ROOT_PASSWORD: root!
+  MYSQL_USER_NAME: app
+  MYSQL_USER_PASSWORD: app!
+  MYSQL_MIGRATION_FILE:
