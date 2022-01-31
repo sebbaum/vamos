@@ -19,12 +19,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	version string
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:     "vamos",
 	Short:   "Vamos is the powerful CLI for your local development environment.",
 	Long:    `Vamos is the next generation local development environment for your awesome project.`,
-	Version: "0.0.1",
+	Version: version,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
